@@ -153,6 +153,8 @@ class _PasswordInputState extends State<PasswordInput> {
         buildConditionRow("Uppercase & lowercase letters", hasUpperLower),
         buildConditionRow("Passwords match", passwordsMatch),
 
+        SizedBox(height: 12),
+
         ElevatedButton(
           onPressed:
               passwordsMatch
@@ -167,6 +169,9 @@ class _PasswordInputState extends State<PasswordInput> {
           style: ElevatedButton.styleFrom(
             backgroundColor: passwordsMatch ? AppColors.bg4 : AppColors.bg3,
             foregroundColor: passwordsMatch ? AppColors.bg2 : AppColors.bg1,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
           child: const Text('Reset Password'),
         ),
