@@ -18,6 +18,7 @@ class CustomForgetButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressed,
+         
         style: ElevatedButton.styleFrom(
           backgroundColor: bgColor,
           foregroundColor: Colors.black,
@@ -25,6 +26,7 @@ class CustomForgetButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: Text(text),
+        
       ),
     );
   }

@@ -69,6 +69,7 @@ class _EmailInputState extends State<EmailInput> {
     emailController.addListener(() {
       final email = emailController.text.trim();
       final isValid = validateEmail(email);
+
       if (isValid != isValidEmail) {
         setState(() {
           isValidEmail = isValid;
@@ -122,8 +123,10 @@ class _EmailInputState extends State<EmailInput> {
               ),
             ),
           ),
+          
         ),
       ],
     );
+    
   }
 }

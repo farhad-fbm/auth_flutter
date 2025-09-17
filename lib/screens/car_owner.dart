@@ -227,40 +227,5 @@ class _CarOwnerState extends State<CarOwner> {
     );
   }
 
-  // Widget textField(
-  //   IconData? icon,
-  //   String label,
-  //   TextEditingController controller, {
-  //   bool isPassword = false,
-  //   bool obscureText = false,
-  //   VoidCallback? onToggle,
-  //   bool toggleVisible = false,
-  //   TextInputType keyboardType = TextInputType.text,
-  //   String? Function(String?)? validator,
-  // }) {
-  //   return Padding(
-  //     padding: const EdgeInsets.symmetric(vertical: 6),
-  //     child: TextFormField(
-  //       controller: controller,
-  //       obscureText: obscureText,
-  //       keyboardType: keyboardType,
-  //       validator: validator,
-  //       decoration: InputDecoration(
-  //         labelText: label,
-  //         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-  //         prefixIcon: icon != null ? Icon(icon) : null,
-  //         suffixIcon:
-  //             isPassword
-  //                 ? IconButton(
-  //                   icon: Icon(
-  //                     toggleVisible ? Icons.visibility : Icons.visibility_off,
-  //                     size: 20,
-  //                   ),
-  //                   onPressed: onToggle,
-  //                 )
-  //                 : null,
-  //       ),
-  //     ),
-  //   );
-  // }
+  
 }

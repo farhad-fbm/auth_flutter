@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final IconData? icon;
-  final String label;
+  final String? label;
   final TextEditingController controller;
   final bool isPassword;
   final bool obscureText;
@@ -10,11 +10,12 @@ class CustomTextField extends StatelessWidget {
   final bool toggleVisible;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
     this.icon,
-    required this.label,
+    this.label,
     required this.controller,
     this.isPassword = false,
     this.obscureText = false,
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
     this.toggleVisible = false,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.onChanged,
   });
 
   @override
@@ -33,6 +35,7 @@ class CustomTextField extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: keyboardType,
         validator: validator,
+        onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
