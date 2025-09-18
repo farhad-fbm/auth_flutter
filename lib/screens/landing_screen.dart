@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uione/screens/all_file_pickers.dart';
 import 'package:uione/screens/car_owner.dart';
 import 'package:uione/screens/repair_shop.dart';
 
@@ -39,7 +40,7 @@ class _SelectPageState extends State<LandingScreen> {
             SizedBox(height: 16),
             SizedBox(
               width: double.infinity, // full width
-              child: selectableButton('test'),
+              child: selectableButton('Pickers'),
             ),
 
             Spacer(),
@@ -58,6 +59,13 @@ class _SelectPageState extends State<LandingScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const RepairShop(),
+                      ),
+                    );
+                  } else if (selected == "Pickers") {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PickerScreen(),
                       ),
                     );
                   } else {
