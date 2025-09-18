@@ -88,29 +88,29 @@ class PickerScreenState extends State<PickerScreen> {
         padding: EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ElevatedButton(onPressed: pickImage, child: Text('Pick Image')),
+              buildPickerButton(title: 'Pick Image', onPressed: pickImage),
               image != null
                   ? CircleAvatar(radius: 50, backgroundImage: FileImage(image!))
                   : SizedBox.shrink(),
               SizedBox(height: 20),
 
-              ElevatedButton(onPressed: pickVideo, child: Text('Pick Video')),
+              buildPickerButton(title: 'Pick Video', onPressed: pickVideo),
               video != null
                   ? Text('Video selected: ${video!.path.split('/').last}')
                   : SizedBox.shrink(),
               SizedBox(height: 20),
-
-              ElevatedButton(
+              buildPickerButton(
+                title: 'Pick Date & Time',
                 onPressed: pickDateTime,
-                child: Text('Pick Date & Time'),
               ),
               dateTime != null
                   ? Text('Selected: $dateTime')
                   : SizedBox.shrink(),
               SizedBox(height: 20),
 
-              ElevatedButton(onPressed: pickFile, child: Text('Pick Any File')),
+              buildPickerButton(title: 'Pick Any File', onPressed: pickFile),
               filePath != null
                   ? Text('File selected: ${filePath!.split('/').last}')
                   : SizedBox.shrink(),
@@ -118,6 +118,23 @@ class PickerScreenState extends State<PickerScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildPickerButton({
+    required String title,
+    required VoidCallback onPressed,
+  }) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8), // roundness
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16), // size
+        // backgroundColor: Colors.blue, // button color
+      ),
+      child: Text(title),
     );
   }
 }
