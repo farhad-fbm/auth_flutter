@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -83,9 +85,9 @@ class PickerScreenState extends State<PickerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Universal Picker')),
+      appBar: AppBar(title: const Text('Universal Picker')),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,27 +95,27 @@ class PickerScreenState extends State<PickerScreen> {
               buildPickerButton(title: 'Pick Image', onPressed: pickImage),
               image != null
                   ? CircleAvatar(radius: 50, backgroundImage: FileImage(image!))
-                  : SizedBox.shrink(),
-              SizedBox(height: 20),
+                  : const SizedBox.shrink(),
+              const SizedBox(height: 20),
 
               buildPickerButton(title: 'Pick Video', onPressed: pickVideo),
               video != null
                   ? Text('Video selected: ${video!.path.split('/').last}')
-                  : SizedBox.shrink(),
-              SizedBox(height: 20),
+                  : const SizedBox.shrink(),
+              const SizedBox(height: 20),
               buildPickerButton(
                 title: 'Pick Date & Time',
                 onPressed: pickDateTime,
               ),
               dateTime != null
                   ? Text('Selected: $dateTime')
-                  : SizedBox.shrink(),
-              SizedBox(height: 20),
+                  : const SizedBox.shrink(),
+              const SizedBox(height: 20),
 
               buildPickerButton(title: 'Pick Any File', onPressed: pickFile),
               filePath != null
                   ? Text('File selected: ${filePath!.split('/').last}')
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
             ],
           ),
         ),
@@ -131,7 +133,7 @@ class PickerScreenState extends State<PickerScreen> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8), // roundness
         ),
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16), // size
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16), // size
         // backgroundColor: Colors.blue, // button color
       ),
       child: Text(title),

@@ -173,23 +173,23 @@ class _CarOwnerState extends State<CarOwner> {
                 controlAffinity:
                     ListTileControlAffinity.leading, // checkbox on left
                 contentPadding: EdgeInsets.zero, // remove default padding
-                title: Text.rich(
+                title: const Text.rich(
                   TextSpan(
                     text: "By signing up, you agree to our ",
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    style: TextStyle(fontSize: 12, color: Colors.grey),
                     children: [
                       TextSpan(
                         text: "Terms",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
                         ),
                       ),
-                      const TextSpan(text: " & "),
+                      TextSpan(text: " & "),
                       TextSpan(
                         text: "Privacy Policy",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
                           color: Colors.blue,
                           decoration: TextDecoration.underline,

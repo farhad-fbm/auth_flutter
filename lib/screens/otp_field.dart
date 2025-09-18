@@ -56,7 +56,7 @@ class _OtpInputState extends State<OtpInput> {
             children: List.generate(4, (index) {
               return Container(
                 width: 60,
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
                   border: Border.all(),
@@ -69,7 +69,7 @@ class _OtpInputState extends State<OtpInput> {
                   maxLength: 1,
                   textAlign: TextAlign.center,
 
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     counterText: '',
                     hintText: '—',
                     border: InputBorder.none,
@@ -80,7 +80,7 @@ class _OtpInputState extends State<OtpInput> {
             }),
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
@@ -98,9 +98,9 @@ class _OtpInputState extends State<OtpInput> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: const Text("Continue"),
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text("Continue"),
             ),
           ),
         ),

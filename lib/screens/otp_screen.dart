@@ -21,12 +21,12 @@ class _OtpScreenState extends State<OtpScreen> {
           Container(
             width: double.infinity,
             height: 250,
-            padding: EdgeInsets.fromLTRB(16, 50, 16, 16),
+            padding: const EdgeInsets.fromLTRB(16, 50, 16, 16),
             decoration: BoxDecoration(
               color: AppColors.bg4,
               borderRadius: BorderRadius.circular(0),
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomBackButton(),
@@ -44,8 +44,8 @@ class _OtpScreenState extends State<OtpScreen> {
               ],
             ),
           ),
-          SizedBox(height: 12),
-          Padding(padding: const EdgeInsets.all(8.0), child: OtpInput()),
+          const SizedBox(height: 12),
+          const Padding(padding: EdgeInsets.all(8.0), child: OtpInput()),
         ],
       ),
     );

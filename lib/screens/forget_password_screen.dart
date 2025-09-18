@@ -21,12 +21,12 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           Container(
             width: double.infinity,
             height: 250,
-            padding: EdgeInsets.fromLTRB(16, 50, 16, 16),
+            padding: const EdgeInsets.fromLTRB(16, 50, 16, 16),
             decoration: BoxDecoration(
               color: AppColors.bg4,
               borderRadius: BorderRadius.circular(0),
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomBackButton(),
@@ -43,8 +43,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               ],
             ),
           ),
-          SizedBox(height: 12),
-          Padding(padding: const EdgeInsets.all(8.0), child: EmailInput()),
+          const SizedBox(height: 12),
+          const Padding(padding: EdgeInsets.all(8.0), child: EmailInput()),
         ],
       ),
     );
@@ -84,14 +84,14 @@ class _EmailInputState extends State<EmailInput> {
       children: [
         TextField(
           controller: emailController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: OutlineInputBorder(),
             hintText: 'enter your email',
             // labelText: 'Enter Your Email',
           ),
           keyboardType: TextInputType.emailAddress,
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         SizedBox(
           width: double.infinity,
 

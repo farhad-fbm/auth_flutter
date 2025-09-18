@@ -15,12 +15,12 @@ class ChangedPasswordScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 250,
-            padding: EdgeInsets.fromLTRB(16, 50, 16, 16),
+            padding: const EdgeInsets.fromLTRB(16, 50, 16, 16),
             decoration: BoxDecoration(
               color: AppColors.bg4,
               borderRadius: BorderRadius.circular(0),
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomBackButton(),
@@ -37,8 +37,8 @@ class ChangedPasswordScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 12),
-          Padding(padding: const EdgeInsets.all(8.0), child: PasswordInput()),
+          const SizedBox(height: 12),
+          const Padding(padding: EdgeInsets.all(8.0), child: PasswordInput()),
         ],
       ),
     );
@@ -153,7 +153,7 @@ class _PasswordInputState extends State<PasswordInput> {
         buildConditionRow("Uppercase & lowercase letters", hasUpperLower),
         buildConditionRow("Passwords match", passwordsMatch),
 
-        SizedBox(height: 12),
+        const SizedBox(height: 12),
 
         ElevatedButton(
           onPressed:
@@ -188,7 +188,7 @@ class _PasswordInputState extends State<PasswordInput> {
           size: 18,
         ),
         const SizedBox(width: 8),
-        Text(text, style: TextStyle(color: AppColors.bg2, fontSize: 14)),
+        Text(text, style: const TextStyle(color: AppColors.bg2, fontSize: 14)),
       ],
     );
   }

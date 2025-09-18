@@ -22,13 +22,13 @@ class _SelectPageState extends State<LandingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Lets get you setup",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('Tell us who you are to peresonalize your expertize'),
+            const Text('Tell us who you are to peresonalize your expertize'),
 
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             Row(
               children: [
                 Expanded(child: selectableButton("Car Owner")),
@@ -37,13 +37,13 @@ class _SelectPageState extends State<LandingScreen> {
               ],
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             SizedBox(
               width: double.infinity, // full width
               child: selectableButton('Pickers'),
             ),
 
-            Spacer(),
+            const Spacer(),
 
             SizedBox(
               width: double.infinity,
@@ -90,7 +90,7 @@ class _SelectPageState extends State<LandingScreen> {
               ),
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
           ],
         ),
       ),

@@ -41,9 +41,9 @@ class _RepairShopState extends State<RepairShop> {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
-              Text(
+              const Text(
                 "Sign Up as Repair Shop with",
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
+                style: TextStyle(fontSize: 14, color: Colors.grey),
               ),
               const SizedBox(height: 16),
 
@@ -216,23 +216,23 @@ class _RepairShopState extends State<RepairShop> {
                 controlAffinity:
                     ListTileControlAffinity.leading, // checkbox on left
                 contentPadding: EdgeInsets.zero, // remove default padding
-                title: Text.rich(
+                title: const Text.rich(
                   TextSpan(
                     text: "By signing up, you agree to our ",
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    style: TextStyle(fontSize: 12, color: Colors.grey),
                     children: [
                       TextSpan(
                         text: "Terms",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
                         ),
                       ),
-                      const TextSpan(text: " & "),
+                      TextSpan(text: " & "),
                       TextSpan(
                         text: "Privacy Policy",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
