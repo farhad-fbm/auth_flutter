@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uione/common/custom_back_button.dart';
 import 'package:uione/common/custom_text_field.dart';
-import 'package:uione/constant/app_colors.dart';
+import 'package:uione/constants/app_colors.dart';
 
 class ChangedPasswordScreen extends StatelessWidget {
   const ChangedPasswordScreen({super.key});

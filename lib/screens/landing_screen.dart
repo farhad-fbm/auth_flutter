@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uione/screens/all_file_pickers.dart';
+// import 'package:uione/screens/all_file_pickers.dart';
 import 'package:uione/screens/car_owner.dart';
 import 'package:uione/screens/repair_shop.dart';
+import 'package:uione/features/tasks/presentation/shop_home_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -40,7 +41,7 @@ class _SelectPageState extends State<LandingScreen> {
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity, // full width
-              child: selectableButton('Pickers'),
+              child: selectableButton('Tasks Screen'),
             ),
 
             const Spacer(),
@@ -61,11 +62,12 @@ class _SelectPageState extends State<LandingScreen> {
                         builder: (context) => const RepairShop(),
                       ),
                     );
-                  } else if (selected == "Pickers") {
+                  } else if (selected == "Tasks Screen") {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PickerScreen(),
+                        // builder: (context) => const PickerScreen(),
+                        builder: (context) => const ShopHomeScreen(),
                       ),
                     );
                   } else {

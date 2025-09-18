@@ -1,7 +1,7 @@
 //  email field widget
 import 'package:flutter/material.dart';
 
-import '../constant/app_colors.dart';
+import '../constants/app_colors.dart';
 import 'changed_password_screen.dart';
 
 class OtpInput extends StatefulWidget {

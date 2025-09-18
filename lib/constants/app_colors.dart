@@ -16,4 +16,6 @@ class AppColors {
   static const Color bg3 = Colors.grey;
   static const Color bg4 = Colors.orange;
 
+  static const Color bg5 =Colors.teal;
+
 }

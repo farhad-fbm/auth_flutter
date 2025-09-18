@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uione/constant/app_colors.dart';
+import 'package:uione/constants/app_colors.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({super.key});
