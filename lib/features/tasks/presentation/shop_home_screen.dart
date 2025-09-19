@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:uione/constants/app_colors.dart';
-import 'package:uione/models/task.dart';
+import 'package:uione/features/tasks/presentation/task.dart';
 import 'package:uione/features/tasks/presentation/widgets/category_selector_widget.dart';
 import 'package:uione/features/tasks/presentation/widgets/task_card.dart';
 import 'package:uione/features/tasks/presentation/add_task_screen.dart';

@@ -47,6 +47,14 @@ class CustomHorizontalChipSelector extends StatelessWidget {
                     showCheckmark: false,
                     selectedColor: Colors.teal,
                     backgroundColor: Colors.grey.shade200,
+                    labelStyle: TextStyle(
+                      // color: selectedItem == item ? Colors.white : Colors.black,
+                      color:
+                          selectedItems?.contains(item) ?? false
+                              ? Colors.white
+                              : Colors.black,
+                    ),
+
                     onSelected: (_) => onItemSelected(item),
                   ),
                 );

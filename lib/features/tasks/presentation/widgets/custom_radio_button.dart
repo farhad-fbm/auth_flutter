@@ -21,14 +21,14 @@ class CustomRadioButton extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 24,
-              height: 24,
+              width: 20,
+              height: 20,
               margin: const EdgeInsets.only(right: 8),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: selected ? Colors.teal : Colors.grey.shade400,
-                  width: 2,
+                  width: 3,
                 ),
               ),
             ),

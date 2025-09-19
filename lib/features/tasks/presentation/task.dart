@@ -1,7 +1,7 @@
 class Task {
   final String title;
   final String category;
-  final String frequency; 
+  final String frequency;
   final bool isToday;
 
   Task({
