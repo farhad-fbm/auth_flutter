@@ -1,0 +1,134 @@
+import 'package:flutter/material.dart';
+
+import 'mirror_icon.dart';
+import 'star_widget.dart';
+import 'star_animation_type.dart';
+
+class RotatingStarsCard extends StatefulWidget {
+  final Color backgroundColor;
+  final String centerIconPath;
+  final double size;
+  final int starCount;
+  final double orbitRadius;
+  final StarAnimationType animationType;
+
+  const RotatingStarsCard({
+    super.key,
+    this.backgroundColor = Colors.blue,
+    required this.centerIconPath,
+    this.size = 150,
+    this.starCount = 5,
+    this.orbitRadius = 50,
+    this.animationType = StarAnimationType.spin,
+  });
+
+  @override
+  State<RotatingStarsCard> createState() => _RotatingStarsCardState();
+}
+
+class _RotatingStarsCardState extends State<RotatingStarsCard>
+    with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late List<Offset> _starPositions;
+
+  late AnimationController _mirrorController;
+  late Animation<double> _mirrorAnimation;
+
+  late AnimationController _orbitController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _starPositions = [
+      Offset(widget.size * 0.2, widget.size * 0.2),
+      Offset(widget.size * 0.8, widget.size * 0.2),
+      Offset(widget.size * 0.2, widget.size * 0.8),
+      Offset(widget.size * 0.8, widget.size * 0.8),
+      Offset(widget.size * 0.5, widget.size * 0.1),
+    ];
+
+    _controller = AnimationController(
+      vsync: this,
+      duration:
+          widget.animationType == StarAnimationType.spin
+              ? const Duration(seconds: 3)
+              : const Duration(seconds: 1),
+    )..repeat(reverse: widget.animationType == StarAnimationType.blink);
+
+    _mirrorController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 12),
+    )..repeat();
+
+    _mirrorAnimation = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: Tween(
+          begin: 1.0,
+          end: -1.0,
+        ).chain(CurveTween(curve: Curves.linear)),
+        weight: 2,
+      ),
+      TweenSequenceItem(tween: ConstantTween(-1.0), weight: 4),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: -1.0,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.linear)),
+        weight: 2,
+      ),
+      TweenSequenceItem(tween: ConstantTween(1.0), weight: 4),
+    ]).animate(_mirrorController);
+
+    _orbitController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 8),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _mirrorController.dispose();
+    _orbitController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: widget.size,
+      height: widget.size,
+      decoration: BoxDecoration(
+        color: widget.backgroundColor,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: const [
+          BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(2, 2)),
+        ],
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          MirrorIcon(
+            animation: _mirrorAnimation,
+            iconPath: widget.centerIconPath,
+            size: widget.size * 0.5,
+          ),
+          ...List.generate(
+            _starPositions.length,
+            (index) => StarWidget(
+              position: _starPositions[index],
+              size: 16,
+              index: index,
+              animationType: widget.animationType,
+              controller: _controller,
+              orbitController: _orbitController,
+              starCount: widget.starCount,
+              orbitRadius: widget.orbitRadius,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

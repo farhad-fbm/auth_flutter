@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:uione/features/tasks/presentation/shop_home_screen.dart';
-// import 'package:uione/screens/all_file_pickers.dart';
-import 'package:uione/screens/car_owner.dart';
-import 'package:uione/screens/repair_shop.dart';
-// import 'package:uione/features/tasks/presentation/shop_home_screen.dart';
+import 'package:uione/screens/car_owner_screen.dart';
+import 'package:uione/screens/repair_shop_screen.dart';
+
+import '../features/animated_icons/icon_home_screen.dart';
+
+
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -52,6 +53,7 @@ class _SelectPageState extends State<LandingScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   if (selected == "Car Owner") {
+                    // NavigationService.navigatTo(Routes.carOwner);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const CarOwner()),
@@ -67,8 +69,8 @@ class _SelectPageState extends State<LandingScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        // builder: (context) => const PickerScreen(),
-                        builder: (context) => const ShopHomeScreen(),
+                        builder: (context) => const CoinRisePage(),
+                        // builder: (context) => const ShopHomeScreen(),
                       ),
                     );
                   } else {
