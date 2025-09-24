@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'widgets/blinking_image.dart';
 import 'widgets/rotating_stars_card.dart';
 import 'widgets/star_animation_type.dart';
 
@@ -111,40 +112,41 @@ class CoinRisePageState extends State<CoinRisePage>
 
     return Scaffold(
       // backgroundColor: Color(0xFF012312),
-      backgroundColor: const Color(0xFF04A141),
+      backgroundColor: Colors.orangeAccent[100],
       body: Stack(
         children: [
-          Center(
+          const Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
 
               children: [
-                SizedBox(
+                BlinkingImage(
+                  imagePath: "assets/icons/neon_logo.png",
                   width: 400,
                   height: 200,
-                  child: Image.asset("assets/icons/neon_logo.png"),
                 ),
+
                 // Spinning stars
-                const RotatingStarsCard(
+                RotatingStarsCard(
                   centerIconPath: "assets/icons/3d_star.png",
                   backgroundColor: Colors.blue,
                   animationType: StarAnimationType.spin,
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 // Blinking stars
-                const RotatingStarsCard(
+                RotatingStarsCard(
                   centerIconPath: "assets/icons/3d_gift_box.png",
                   backgroundColor: Colors.purple,
                   animationType: StarAnimationType.blink,
                 ),
-                const SizedBox(height: 16),
-                const RotatingStarsCard(
+                SizedBox(height: 16),
+                RotatingStarsCard(
                   centerIconPath: "assets/icons/3d_star.png",
                   backgroundColor: Colors.blue,
                   animationType: StarAnimationType.orbit,
                 ),
 
-                const SizedBox(height: 40),
+                SizedBox(height: 40),
               ],
             ),
           ),
