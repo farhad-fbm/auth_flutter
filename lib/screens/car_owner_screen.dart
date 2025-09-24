@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uione/common/custom_button.dart';
-import 'package:uione/common/custom_text_field.dart';
+import 'package:uione/common_widgets/custom_button.dart';
+import 'package:uione/common_widgets/custom_text_field.dart';
 import 'package:uione/features/auth/presensation/login_screen.dart';
 
 class CarOwner extends StatefulWidget {

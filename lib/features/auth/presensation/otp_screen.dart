@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uione/common/custom_back_button.dart';
+import 'package:uione/common_widgets/custom_back_button.dart';
 import 'package:uione/constants/app_colors.dart';
 
 import 'widgets/otp_field.dart';

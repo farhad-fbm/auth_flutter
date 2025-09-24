@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uione/common/custom_button.dart';
+import 'package:uione/common_widgets/custom_button.dart';
 import 'package:uione/features/auth/presensation/forget_password_screen.dart';
 import 'package:uione/screens/landing_screen.dart';
 
