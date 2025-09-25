@@ -12,8 +12,7 @@ class CoinRisePage extends StatefulWidget {
   CoinRisePageState createState() => CoinRisePageState();
 }
 
-class CoinRisePageState extends State<CoinRisePage>
-    with SingleTickerProviderStateMixin {
+class CoinRisePageState extends State<CoinRisePage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final int coinCount = 20;
   final Random random = Random();
@@ -30,19 +29,10 @@ class CoinRisePageState extends State<CoinRisePage>
     // Precompute coin properties
     coinSizes = List.generate(coinCount, (_) => random.nextDouble() * 15 + 15);
     coinDelays = List.generate(coinCount, (_) => random.nextDouble() * 0.3);
-    coinXOffsets = List.generate(
-      coinCount,
-      (_) => (random.nextDouble() - 0.5) * 80,
-    );
-    coinRotations = List.generate(
-      coinCount,
-      (_) => (random.nextDouble() - 0.5) * pi / 4,
-    );
+    coinXOffsets = List.generate(coinCount, (_) => (random.nextDouble() - 0.5) * 80);
+    coinRotations = List.generate(coinCount, (_) => (random.nextDouble() - 0.5) * pi / 4);
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 4),
-    );
+    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 4));
 
     // Reset after animation completes
     _controller.addStatusListener((status) {
@@ -76,19 +66,14 @@ class CoinRisePageState extends State<CoinRisePage>
           coins.add(
             Positioned(
               bottom: yPos,
-              left:
-                  MediaQuery.of(context).size.width / 2 - 15 + coinXOffsets[i],
+              left: MediaQuery.of(context).size.width / 2 - 15 + coinXOffsets[i],
               child: Opacity(
                 opacity: opacity,
                 child: Transform.rotate(
                   angle: rotation,
                   child: Transform.scale(
                     scale: scale,
-                    child: Icon(
-                      Icons.circle,
-                      color: Colors.amber,
-                      size: coinSizes[i],
-                    ),
+                    child: Icon(Icons.circle, color: Colors.amber, size: coinSizes[i]),
                   ),
                 ),
               ),
@@ -120,11 +105,7 @@ class CoinRisePageState extends State<CoinRisePage>
               mainAxisAlignment: MainAxisAlignment.end,
 
               children: [
-                BlinkingImage(
-                  imagePath: "assets/icons/neon_logo.png",
-                  width: 400,
-                  height: 200,
-                ),
+                BlinkingImage(imagePath: "assets/icons/neon_logo.png", width: 400, height: 200),
 
                 // Spinning stars
                 RotatingStarsCard(
@@ -164,10 +145,9 @@ class CoinRisePageState extends State<CoinRisePage>
         child: SizedBox(
           width: 60,
           height: 60,
-          child:
-              clicked
-                  ? Image.asset("assets/icons/3di_bag.png")
-                  : Image.asset("assets/icons/3d_gift_box.png"),
+          child: clicked
+              ? Image.asset("assets/icons/3di_bag.png")
+              : Image.asset("assets/icons/3d_gift_box.png"),
         ),
       ),
     );

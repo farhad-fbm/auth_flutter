@@ -18,13 +18,13 @@ final class RouteGenerator {
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.logInScreen:
-      //   return Platform.isAndroid
-      //       ? _FadedTransitionRoute(
-      //         widget: const ResumeComplete(),
-      //         settings: settings,
-      //       )
-      //       : CupertinoPageRoute(builder: (context) => const logInScreen());
+    //   case Routes.logInScreen:
+    //     return Platform.isAndroid
+    //         ? _FadedTransitionRoute(
+    //           widget: const logInScreen(),
+    //           settings: settings,
+    //         )
+    //         : CupertinoPageRoute(builder: (context) => const logInScreen());
 
 
       default:

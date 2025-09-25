@@ -24,10 +24,7 @@ class _SelectPageState extends State<LandingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Lets get you setup",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            const Text("Lets get you setup", style: TextStyle(fontWeight: FontWeight.bold)),
             const Text('Tell us who you are to peresonalize your expertize'),
 
             const SizedBox(height: 32),
@@ -39,11 +36,12 @@ class _SelectPageState extends State<LandingScreen> {
               ],
             ),
 
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity, // full width
-              child: selectableButton('Tasks Screen'),
-            ),
+            const SizedBox(height: 8),
+            SizedBox(width: double.infinity, child: selectableButton('Shop')),
+            const SizedBox(height: 8),
+            SizedBox(width: double.infinity, child: selectableButton("Image Upload")),
+            const SizedBox(height: 8),
+            SizedBox(width: double.infinity, child: selectableButton('Animation Screen')),
 
             const Spacer(),
 
@@ -52,45 +50,33 @@ class _SelectPageState extends State<LandingScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   if (selected == "Car Owner") {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const CarOwner()),
-                    // );
-                    context.push('/carOwner');
+                    context.push('/car_owner');
                   } else if (selected == "Repair Shop") {
-                    context.push('/repairShop');
-                  } else if (selected == "Tasks Screen") {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const CoinRisePage(),
-                    //     // builder: (context) => const ShopHomeScreen(),
-                    //   ),
-                    // );
-                    context.push('/CoinRisePage');
+                    context.push('/repair_shop');
+                  } else if (selected == "Shop") {
+                    context.push('/shop_home');
+                  } else if (selected == "Image Upload") {
+                    context.push('/img_upload');
+                  } else if (selected == "Animation Screen") {
+                    context.push('/coin_rise_page');
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Please select an option")),
-                    );
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(const SnackBar(content: Text("Please select an option")));
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 12,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                   backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white, // text color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   textStyle: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 child: const Text('Continue'),
               ),
             ),
 
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
           ],
         ),
       ),

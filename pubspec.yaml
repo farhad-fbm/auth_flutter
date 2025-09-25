@@ -51,7 +51,7 @@ dev_dependencies:
 flutter_gen:
   # parse_metadata: true # <- Build Time: Add this line (default: false)
   output: lib/gen/
-  line_length: 80
+  line_length: 120
   # Optional
   # integrations:
   #   image: true

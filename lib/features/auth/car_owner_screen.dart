@@ -16,8 +16,7 @@ class _CarOwnerState extends State<CarOwner> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   bool passwordVisible = false;
   bool confirmPasswordVisible = false;
@@ -26,7 +25,11 @@ class _CarOwnerState extends State<CarOwner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Sign Up"), centerTitle: false),
+      appBar: AppBar(
+        title: const Text("Sign Up"),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -45,37 +48,22 @@ class _CarOwnerState extends State<CarOwner> {
               ),
               const SizedBox(height: 16),
 
-              CustomIconButton(
-                icon: Icons.g_mobiledata,
-                text: "Google",
-                onPressed: () {},
-              ),
+              CustomIconButton(icon: Icons.g_mobiledata, text: "Google", onPressed: () {}),
               const SizedBox(height: 8),
-              CustomIconButton(
-                icon: Icons.apple,
-                text: "Apple",
-                onPressed: () {},
-              ),
+              CustomIconButton(icon: Icons.apple, text: "Apple", onPressed: () {}),
               const SizedBox(height: 16),
 
               const Row(
                 children: [
                   Expanded(child: Divider(thickness: 1)),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text("or"),
-                  ),
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 8.0), child: Text("or")),
                   Expanded(child: Divider(thickness: 1)),
                 ],
               ),
               const SizedBox(height: 16),
 
               //
-              CustomTextField(
-                label: "Name",
-                icon: Icons.people,
-                controller: nameController,
-              ),
+              CustomTextField(label: "Name", icon: Icons.people, controller: nameController),
 
               CustomTextField(
                 icon: Icons.email,
@@ -124,9 +112,7 @@ class _CarOwnerState extends State<CarOwner> {
                 isPassword: true,
                 obscureText: !confirmPasswordVisible,
                 onToggle: () {
-                  setState(
-                    () => confirmPasswordVisible = !confirmPasswordVisible,
-                  );
+                  setState(() => confirmPasswordVisible = !confirmPasswordVisible);
                 },
                 toggleVisible: confirmPasswordVisible,
                 validator: (value) {
@@ -151,9 +137,7 @@ class _CarOwnerState extends State<CarOwner> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
+                        MaterialPageRoute(builder: (context) => const LoginScreen()),
                       );
                     },
                     child: const Text("Log In"),
@@ -170,8 +154,7 @@ class _CarOwnerState extends State<CarOwner> {
                     agreeToTerms = value ?? false;
                   });
                 },
-                controlAffinity:
-                    ListTileControlAffinity.leading, // checkbox on left
+                controlAffinity: ListTileControlAffinity.leading, // checkbox on left
                 contentPadding: EdgeInsets.zero, // remove default padding
                 title: const Text.rich(
                   TextSpan(
@@ -203,16 +186,15 @@ class _CarOwnerState extends State<CarOwner> {
               const SizedBox(height: 16),
 
               ElevatedButton(
-                onPressed:
-                    agreeToTerms
-                        ? () {
-                          if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Form is valid ")),
-                            );
-                          }
+                onPressed: agreeToTerms
+                    ? () {
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(
+                            context,
+                          ).showSnackBar(const SnackBar(content: Text("Form is valid ")));
                         }
-                        : null,
+                      }
+                    : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
@@ -226,6 +208,4 @@ class _CarOwnerState extends State<CarOwner> {
       ),
     );
   }
-
-  
 }

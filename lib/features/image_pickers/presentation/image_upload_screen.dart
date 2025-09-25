@@ -1,20 +1,20 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:uione/features/image_pickers/presentation/images_showing_screen.dart';
 import 'package:uione/features/image_pickers/presentation/widgets/common_image_view.dart';
 import 'package:uione/features/image_pickers/presentation/widgets/custom_button.dart';
 
 import 'widgets/custom_hexagon_button.dart';
 
-class PhotoUploadScreen extends StatefulWidget {
-  const PhotoUploadScreen({super.key});
+class ImageUploadScreen extends StatefulWidget {
+  const ImageUploadScreen({super.key});
 
   @override
-  State<PhotoUploadScreen> createState() => PhotoUploadScreenState();
+  State<ImageUploadScreen> createState() => ImageUploadScreenState();
 }
 
-class PhotoUploadScreenState extends State<PhotoUploadScreen> {
+class ImageUploadScreenState extends State<ImageUploadScreen> {
   final ImagePicker imagePicker = ImagePicker();
   File? selectedImage;
   List<File> images = [];
@@ -41,21 +41,7 @@ class PhotoUploadScreenState extends State<PhotoUploadScreen> {
 
   void goToImageShowingScreen() {
     if (images.isNotEmpty) {
-  
-      Navigator.of(context).push(
-        PageRouteBuilder(
-          pageBuilder:
-              (context, animation, secondaryAnimation) =>
-                  ImagesShowingScreen(images: images),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            final fadeAnimation = CurvedAnimation(
-              parent: animation,
-              curve: Curves.easeInOut,
-            );
-            return FadeTransition(opacity: fadeAnimation, child: child);
-          },
-        ),
-      );
+      context.push('/img_upload/img_show', extra: images); // passing list og images
     }
   }
 
@@ -78,7 +64,6 @@ class PhotoUploadScreenState extends State<PhotoUploadScreen> {
         ),
       ),
       body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: Alignment.centerLeft,
@@ -91,13 +76,12 @@ class PhotoUploadScreenState extends State<PhotoUploadScreen> {
             ),
           ),
           Expanded(
-            child:
-                selectedImage != null
-                    ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CommonImageView(image: selectedImage!),
-                    )
-                    : const Center(child: Text("No Image Selected")),
+            child: selectedImage != null
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CommonImageView(image: selectedImage!),
+                  )
+                : const Center(child: Text("No Image Selected")),
           ),
           Padding(
             padding: const EdgeInsets.all(32.0),
@@ -117,10 +101,7 @@ class PhotoUploadScreenState extends State<PhotoUploadScreen> {
                   backgroundColor: Colors.red[800]!,
                   onPressed: pickFromCamera,
                 ),
-                CustomButton(
-                  title: 'Weiter',
-                  onPressed: goToImageShowingScreen,
-                ),
+                CustomButton(title: 'Weiter', onPressed: goToImageShowingScreen),
               ],
             ),
           ),
