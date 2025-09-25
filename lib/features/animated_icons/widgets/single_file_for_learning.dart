@@ -164,10 +164,9 @@ class _RotatingStarsCardState extends State<RotatingStarsCard>
           AnimatedBuilder(
             animation: _mirrorAnimation,
             builder: (context, child) {
-              return Transform(
+              return Transform.scale(
                 alignment: Alignment.center,
-                transform:
-                    Matrix4.identity()..scale(_mirrorAnimation.value, 1.0),
+                scale: _mirrorAnimation.value,
                 child: SizedBox(
                   width: widget.size * 0.5,
                   height: widget.size * 0.5,

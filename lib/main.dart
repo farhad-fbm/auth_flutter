@@ -1,8 +1,6 @@
-
-
 import 'package:flutter/material.dart';
-
-import 'package:uione/screens/landing_screen.dart';
+import 'helpers/all_routes_go_router.dart';
+// import 'package:uione/screens/landing_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,14 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
-      home: LandingScreen(),
+      // home: LandingScreen(),
     );
   }
 }
-
-
-
-
-

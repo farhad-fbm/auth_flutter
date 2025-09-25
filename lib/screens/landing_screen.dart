@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:uione/screens/car_owner_screen.dart';
-import 'package:uione/screens/repair_shop_screen.dart';
+import 'package:go_router/go_router.dart';
+// import 'package:uione/screens/car_owner_screen.dart';
+// import 'package:uione/screens/repair_shop_screen.dart';
 
-import '../features/animated_icons/icon_home_screen.dart';
-
-
+// import '../features/animated_icons/icon_home_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -53,26 +52,22 @@ class _SelectPageState extends State<LandingScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   if (selected == "Car Owner") {
-                    // NavigationService.navigatTo(Routes.carOwner);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const CarOwner()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const CarOwner()),
+                    // );
+                    context.push('/carOwner');
                   } else if (selected == "Repair Shop") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RepairShop(),
-                      ),
-                    );
+                    context.push('/repairShop');
                   } else if (selected == "Tasks Screen") {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CoinRisePage(),
-                        // builder: (context) => const ShopHomeScreen(),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const CoinRisePage(),
+                    //     // builder: (context) => const ShopHomeScreen(),
+                    //   ),
+                    // );
+                    context.push('/CoinRisePage');
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Please select an option")),

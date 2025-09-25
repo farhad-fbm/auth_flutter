@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class MirrorIcon extends StatelessWidget {
   final Animation<double> animation;
   final String iconPath;
@@ -17,9 +18,9 @@ class MirrorIcon extends StatelessWidget {
     return AnimatedBuilder(
       animation: animation,
       builder: (context, child) {
-        return Transform(
+        return Transform.scale(
           alignment: Alignment.center,
-          transform: Matrix4.identity()..scale(animation.value, 1.0),
+          scale: animation.value,
           child: SizedBox(
             width: size,
             height: size,
