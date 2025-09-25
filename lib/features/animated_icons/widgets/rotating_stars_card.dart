@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'mirror_icon.dart';
-import 'star_widget.dart';
-import 'star_animation_type.dart';
+import 'icon_mirroring.dart';
+import 'small_star_widget.dart';
+import '../data/star_animation_type.dart';
 
 class RotatingStarsCard extends StatefulWidget {
   final Color backgroundColor;
@@ -26,15 +26,11 @@ class RotatingStarsCard extends StatefulWidget {
   State<RotatingStarsCard> createState() => _RotatingStarsCardState();
 }
 
-class _RotatingStarsCardState extends State<RotatingStarsCard>
-    with TickerProviderStateMixin {
-  late AnimationController _controller;
+class _RotatingStarsCardState extends State<RotatingStarsCard> with TickerProviderStateMixin {
   late List<Offset> _starPositions;
-
-  late AnimationController _mirrorController;
-  late Animation<double> _mirrorAnimation;
-
+  late AnimationController _spinController;
   late AnimationController _orbitController;
+  // late Animation<double> _mirrorAnimation;
 
   @override
   void initState() {
@@ -48,48 +44,21 @@ class _RotatingStarsCardState extends State<RotatingStarsCard>
       Offset(widget.size * 0.5, widget.size * 0.1),
     ];
 
-    _controller = AnimationController(
+    _spinController = AnimationController(
       vsync: this,
-      duration:
-          widget.animationType == StarAnimationType.spin
-              ? const Duration(seconds: 3)
-              : const Duration(seconds: 1),
+      duration: widget.animationType == StarAnimationType.spin
+          ? const Duration(seconds: 3)
+          : const Duration(seconds: 1),
     )..repeat(reverse: widget.animationType == StarAnimationType.blink);
 
-    _mirrorController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 12),
-    )..repeat();
-
-    _mirrorAnimation = TweenSequence<double>([
-      TweenSequenceItem(
-        tween: Tween(
-          begin: 1.0,
-          end: -1.0,
-        ).chain(CurveTween(curve: Curves.linear)),
-        weight: 2,
-      ),
-      TweenSequenceItem(tween: ConstantTween(-1.0), weight: 4),
-      TweenSequenceItem(
-        tween: Tween(
-          begin: -1.0,
-          end: 1.0,
-        ).chain(CurveTween(curve: Curves.linear)),
-        weight: 2,
-      ),
-      TweenSequenceItem(tween: ConstantTween(1.0), weight: 4),
-    ]).animate(_mirrorController);
-
-    _orbitController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 8),
-    )..repeat();
+    // _________________________________________________________________________________________________
+    _orbitController = AnimationController(vsync: this, duration: const Duration(seconds: 8))
+      ..repeat();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
-    _mirrorController.dispose();
+    _spinController.dispose();
     _orbitController.dispose();
     super.dispose();
   }
@@ -102,26 +71,24 @@ class _RotatingStarsCardState extends State<RotatingStarsCard>
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(2, 2)),
-        ],
+        boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 8, offset: Offset(2, 2))],
       ),
       child: Stack(
         alignment: Alignment.center,
         children: [
-          MirrorIcon(
-            animation: _mirrorAnimation,
+          IconMirroring(
+            // animation: _mirrorAnimation,
             iconPath: widget.centerIconPath,
             size: widget.size * 0.5,
           ),
           ...List.generate(
             _starPositions.length,
-            (index) => StarWidget(
+            (index) => SmallStarWidget(
               position: _starPositions[index],
               size: 16,
               index: index,
               animationType: widget.animationType,
-              controller: _controller,
+              controller: _spinController,
               orbitController: _orbitController,
               starCount: widget.starCount,
               orbitRadius: widget.orbitRadius,

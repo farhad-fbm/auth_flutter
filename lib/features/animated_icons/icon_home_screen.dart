@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
-import 'widgets/blinking_image.dart';
+import 'data/star_animation_type.dart';
+import 'widgets/blinking_logo.dart';
 import 'widgets/rotating_stars_card.dart';
-import 'widgets/star_animation_type.dart';
 
 class CoinRisePage extends StatefulWidget {
   const CoinRisePage({super.key});
@@ -97,7 +96,7 @@ class CoinRisePageState extends State<CoinRisePage> with SingleTickerProviderSta
 
     return Scaffold(
       // backgroundColor: Color(0xFF012312),
-      backgroundColor: Colors.orangeAccent[100],
+      backgroundColor: const Color(0xFF04A141),
       body: Stack(
         children: [
           const Center(
@@ -105,8 +104,11 @@ class CoinRisePageState extends State<CoinRisePage> with SingleTickerProviderSta
               mainAxisAlignment: MainAxisAlignment.end,
 
               children: [
-                BlinkingImage(imagePath: "assets/icons/neon_logo.png", width: 400, height: 200),
-
+                SizedBox(
+                  width: 400,
+                  height: 200,
+                  child: BlinkingLogo(imagePath: "assets/icons/neon_logo.png"),
+                ),
                 // Spinning stars
                 RotatingStarsCard(
                   centerIconPath: "assets/icons/3d_star.png",

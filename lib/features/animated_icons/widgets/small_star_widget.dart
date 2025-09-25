@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'star_animation_type.dart';
+import '../data/star_animation_type.dart';
 
-class StarWidget extends StatelessWidget {
+class SmallStarWidget extends StatelessWidget {
   final Offset position;
   final double size;
   final int index;
@@ -12,7 +12,7 @@ class StarWidget extends StatelessWidget {
   final int starCount;
   final double orbitRadius;
 
-  const StarWidget({
+  const SmallStarWidget({
     super.key,
     required this.position,
     required this.size,
@@ -58,8 +58,7 @@ class StarWidget extends StatelessWidget {
       return AnimatedBuilder(
         animation: orbitController,
         builder: (context, child) {
-          final angle =
-              2 * pi * orbitController.value + (index * 2 * pi / starCount);
+          final angle = 2 * pi * orbitController.value + (index * 2 * pi / starCount);
           final dx = orbitRadius * cos(angle);
           final dy = orbitRadius * sin(angle);
 
