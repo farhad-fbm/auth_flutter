@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'dart:io';
-
 import 'package:go_router/go_router.dart';
 import 'package:uione/features/auth/car_owner_screen.dart';
 import 'package:uione/screens/landing_screen.dart';
@@ -11,7 +12,6 @@ import '../features/image_pickers/presentation/images_showing_screen.dart';
 import '../features/tasks/presentation/add_task_screen.dart';
 import '../features/tasks/presentation/shop_home_screen.dart';
 import '../screens/error_screen.dart';
-import 'custom_transition.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -73,3 +73,49 @@ final GoRouter router = GoRouter(
     ),
   ],
 );
+/*
+.
+.
+//____________________________________________________________________________________________________________________________________
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+*/
+Page<T> customTransition<T>({
+  required Widget child,
+  required LocalKey key,
+  required BuildContext context,
+  Duration duration = const Duration(milliseconds: 300),
+}) {
+  if (Theme.of(context).platform == TargetPlatform.iOS) {
+    return CupertinoPage<T>(key: key, child: child);
+  } else {
+    return CustomTransitionPage<T>(
+      key: key,
+      child: child,
+      transitionDuration: duration,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+          child: child,
+        );
+      },
+    );
+  }
+}
